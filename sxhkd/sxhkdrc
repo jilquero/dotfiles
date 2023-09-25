@@ -1,0 +1,71 @@
+#################################################################
+# KEYBOARD BINDINGS FOR ANY TWM                                 #
+#################################################################
+
+# Aplications
+
+# Launch Alacritty
+super + Return
+    alacritty
+
+#Thunar
+super + shift + Return
+    thunar
+
+# super +
+# F1    ->  Firefox
+# F2    ->  VSCode
+# F3    ->  Thunar
+# F4    ->  Gimp
+# F5    ->  Vlc
+# F6    ->  Spotify
+# F7    ->  Caprine & Discord
+# F8    ->  Virtualbox
+
+super + {F1,F2,F3,F4,F5,F6,F7,F8}
+    {firefox,code,thunar,gimp,vlc --cideo-on-top,spotify,caprine;discord,virtualbox}
+
+# super + a ;
+# w     ->  Firefox
+# e     ->  VSCode
+# f     ->  Thunar
+# g     ->  Gimp
+# v     ->  Vlc
+# s     ->  Spotify
+# c     ->  Caprine
+# d     ->  Discord
+# b     ->  Virtualbox
+
+super + a ; {w,e,f,g,v,s,c,d,b}
+    {firefox,code,thunar,gimp,vlc --cideo-on-top,spotify,caprine,discord,virtualbox}
+
+# Rofi
+
+super + shift + {g,d,s}
+    rofi -show {window,drun,run}
+
+# super + d ;
+# d     ->  Scripts menu
+# q     ->  Quick links
+# e     ->  Edit configs
+# x     ->  Powermenu
+# Print ->  Screenshots
+# c     ->  Calculator
+# t     ->  Translator
+
+super + d ; {d,q,e,x,Print}
+    {rofi-scripts,rofi-links,rofi-configs,rofi-power,rofi-ss}
+
+super + d ; {c,t}
+    rofi -show x -modi x:{rofi-calc,rofi-translate} -theme-str 'listview\{lines:0;\}'
+
+# Screenshot
+{ctrl,super} + {_,shift} + Print
+    flameshot {full, screen} {-c, }
+
+Print
+    flameshot gui
+
+# Reload sxhkd
+super + Escape
+    pkill -USR1 -x sxhkd

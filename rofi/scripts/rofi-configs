@@ -1,0 +1,71 @@
+#!/bin/env bash
+
+# default editor
+DEF_EDITOR="nvim"
+
+# list of configs
+declare -a options=(
+    "Qtile - /.config/qtile"
+    "Alacritty - /.config/alacritty"
+    "Sxhkd - /.config/sxhkd/sxhkdrc"
+    "Neovim - /.config/nvim/init.vim"
+    "Vim - /.vimrc"
+    "Picom - /.config/qtile/picom.conf"
+    "Zsh - /.zshrc"
+    "Bash - /.bashrc"
+    "Fish - /.config/fish/config.fish"
+    "Scripts - /.local/bin"
+)
+
+declare -a qtileOptions=(
+    "Config - /config.py"
+    "Widgets - /settings/widgets.py"
+    "Layouts - /settings/layouts.py"
+    "Groups - /settings/groups.py"
+    "Keys - /settings/keys.py"
+    "Mouse - /settings/mouse.py"
+    "Screens - /settings/screens.py"
+    "Paths - /settings/path.py"
+    "Theme - /settings/theme.py"
+)
+
+declare -a alacrittyOptions=(
+    "Config - /alacritty.yml"
+    "Colors - /alacritty/colors.yml"
+    "Font - /alacritty/font.yml"
+)
+
+declare -a scriptsOptions=(
+    "Rofi-power - /rofi-power"
+    "Rofi-translate - /rofi-translate"
+    "Rofi-ss - /rofi-ss"
+    "Rofi-calc - /rofi-calc"
+    "Rofi-configs - /rofi-configs"
+    "Rofi-links - /rofi-links"
+)
+
+# creates the menu
+choice=$(printf '%s\n' "${options[@]}" |\
+        awk '{printf "%-10s%s %s\n", $1, $2, $3}' |\
+        rofi -dmenu -i -p '')
+
+cfg="$HOME$(echo $choice | awk '{print $NF}')"
+option=$(echo $choice | awk '{print $1}')
+
+# checks for configs with multiple files
+if [[ "$option" == "Qtile" ]]; then
+    choice=$(printf '%s\n' "${qtileOptions[@]}" | rofi -dmenu -i -p '' | awk '{print $NF}')
+elif [[ "$option" == "Alacritty" ]]; then
+    choice=$(printf '%s\n' "${alacrittyOptions[@]}" | rofi -dmenu -i -p '' | awk '{print $NF}')
+elif [[ "$option" == "Scripts" ]]; then
+    choice=$(printf '%s\n' "${scriptsOptions[@]}" | rofi -dmenu -i -p '' | awk '{print $NF}')
+fi
+
+# opens the selected config file with vim
+# exits otherwise
+if [ "$choice" ]; then
+    cfg+=$choice
+    alacritty -e $DEF_EDITOR "$cfg"
+else
+    echo "exit 1"; exit 1
+fi

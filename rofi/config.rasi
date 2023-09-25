@@ -1,0 +1,116 @@
+@theme "/dev/null"
+configuration {
+    drun {
+        display-name: "";
+        drun-display-format: "{icon} {name}";
+    }
+
+    run {
+        display-name: "";
+    }
+
+    window {
+        display-name: "";
+    }
+
+    calc {
+        display-name: "";
+    }
+
+    timeout {
+        delay: 20;
+        action: "kb-cancel";
+    }
+    modi: "window,run,drun,calc,ssh";
+    font: "JetBrainsMono Nerd Font Medium 10";
+    show-icons: true;
+    icon-theme: "Papirus";
+}
+
+* {
+    /* Dracula theme colour palette */
+    drac-bgd: #282a36;
+    drac-cur: #44475a;
+    drac-fgd: #f8f8f2;
+    drac-cmt: #6272a4;
+    drac-cya: #8be9fd;
+    drac-grn: #50fa7b;
+    drac-ora: #ffb86c;
+    drac-pnk: #ff79c6;
+    drac-pur: #bd93f9;
+    drac-red: #ff5555;
+    drac-yel: #f1fa8c;
+
+    font: "Jetbrains Mono Nerd Font 14";
+
+    foreground: @drac-fgd;
+    background-color: @drac-bgd;
+    active-background: @drac-pnk;
+    urgent-background: @drac-red;
+    
+    selected-background: @active-background;
+    selected-urgent-background: @urgent-background;
+    selected-active-background: @active-background;
+    separatorcolor: @active-background;
+    bordercolor: #6272a4;
+    text-color: @drac-fgd;
+}
+
+window {
+    /* transparency: "real";
+    border-color: @drac-pur;
+    border: 3px; */
+    width:        500;
+}
+
+mainbox {
+    children: [inputbar, message, listview];
+}
+
+inputbar {
+    background-color: @drac-cmt;
+    children: [prompt, entry];
+}
+
+entry {
+    background-color: inherit;
+    padding: 12px 3px;
+}
+
+prompt {
+    background-color: inherit;
+    padding: 12px;
+}
+
+message {
+    border: -4px 0px 0px;
+    background-color: @drac-cur;
+    children: [textbox];
+}
+
+textbox {
+    background-color: inherit;
+    padding: 12px;
+}
+
+listview {
+    lines: 6;
+}
+
+element {
+    text-color: @drac-cmt;
+}
+
+element-icon {
+    background-color: inherit;
+    padding: 10px 10px;
+}
+
+element-text {
+    padding: 10px 0px;
+    text-color: inherit;
+}
+
+element-text selected {
+    text-color: @drac-pur;
+}

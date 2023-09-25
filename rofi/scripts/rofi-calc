@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Simple calculator script
+function main {
+    if [[ "${input}" =~ "=" ]]; then
+        output=${input}
+    else
+        result=`echo "${input}" | bc -l`
+        output="${input} = ${result}"
+    fi
+
+    # so this piece of s doesnt close
+    echo 
+
+    # show result
+    if [[ ! -z "$output" ]]; then
+        echo -en "\0message\x1f$output\n"
+    else
+        echo -en "\0message\x1fOOF NIE DZIAŁA I CHUJ WIE CZEMU\n"
+    fi
+}
+
+
+input=$@
+
+if [[ -z $input ]]; then
+    echo -en "\0prompt\x1f\n"
+    echo -en "\0message\x1fType sth for ffs\n"
+else
+    main
+fi
+
+

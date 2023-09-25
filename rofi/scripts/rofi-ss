@@ -1,0 +1,16 @@
+#!/bin/env bash
+
+# creates the menu
+[[ -z "$DISPLAY" ]] && exit 1
+choice=$(echo -e " : Screen\n : Full\n : Area" |\
+        rofi -dmenu -i -l 3 -p '' |\
+        awk '{print $NF}' |\
+        cut -c -1)
+
+# takes screenshots
+[[ -z "$choice" ]] && exit 1
+case "$choice" in
+  S) flameshot screen -c;;
+  F) flameshot full -c  ;;
+  A) flameshot gui -c   ;;
+esac

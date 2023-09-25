@@ -1,0 +1,49 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+import:
+  ####################################################
+  ## SET THEME: Choose ONE color scheme from  list. ##
+  ## #################################################
+  # Available themes are:
+
+  # - ~/.config/alacritty/colorschemes/DoomOne.yml
+  - ~/.config/alacritty/colorschemes/Dracula.yml
+  # - ~/.config/alacritty/colorschemes/GruvboxDark.yml
+  # - ~/.config/alacritty/colorschemes/MonokaiPro.yml
+  # - ~/.config/alacritty/colorschemes/Nord.yml
+  # - ~/.config/alacritty/colorschemes/OceanicNext.yml
+  # - ~/.config/alacritty/colorschemes/Palenight.yml
+  # - ~/.config/alacritty/colorschemes/SolarizedLight.yml
+  # - ~/.config/alacritty/colorschemes/SolarizedDark.yml
+  # - ~/.config/alacritty/colorschemes/TomorrowNight.yml
+  # - ~/.config/alacritty/colorschemes/Default.yml
+
+  ###########################################
+  ## SET FONT: Choose ONE font from  list. ##
+  ## ########################################
+  # Available fonts are:
+
+  # - ~/.config/alacritty/fonts/SourceCodePro.yml
+  # - ~/.config/alacritty/fonts/CodeNewRoman.yml #Nerd Font
+  # - ~/.config/alacritty/fonts/RobotoMono.yml #Nerd Font
+  - ~/.config/alacritty/fonts/Hack.yml
+  # - ~/.config/alacritty/fonts/JetBrainsMono.yml
+  # - ~/.config/alacritty/fonts/UbuntuMono.yml #Nerd Font
+  # - ~/.config/alacritty/fonts/Monofur.yml #Nerd Font
+  # - ~/.config/alacritty/fonts/TerminessTTF.yml #Nerd Font
+  # - ~/.config/alacritty/fonts/Mononoki.yml #Nerd Font
+
+  #############################################################
+  ## SET KEYBINDINGS: Choose ONE keybindings set from  list. ##
+  ## ##########################################################
+  # Available fonts are:
+
+  - ~/.config/alacritty/keybindings/Default.yml
+  # - ~/.config/alacritty/keybindings/Vi.yml
+
+  ########################################################
+  ## SET SETTINGS: Choose ONE settings file from  list. ##
+  ## #####################################################
+  # Available fonts are:
+
+  - ~/.config/alacritty/settings/settings.yml

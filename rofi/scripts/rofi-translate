@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+primary_translator="google"
+secondary_translator="bing"
+target="en"
+
+# translate input
+function translate {
+    # echo 1
+    trans -source=$source -target=$target -e $primary_translator -b "$1"
+    # echo 2
+}
+
+
+function main {
+    # parse input
+    case "$input" in
+        ??*:??*)
+            source=$(echo "$input" | awk -F':' '{print $1}')
+            target=$(echo "$input" | awk -F'[:| ]' '{print $2}')
+            input=$(echo "$input" | cut -d' ' -f2-);;
+        :??*)
+            target=$(echo "$input" | awk -F'[:| ]' '{print $2}')
+            input=$(echo "$input" | cut -d' ' -f2-);;
+    esac
+
+    # so this piece of s doesnt close
+    echo 
+
+    # translates input
+    result=$(translate "$input")
+
+    # Switch to secondary transltor if first doesnt respond
+    if [[ -z "$result" ]]; then
+        primary_translator=$secondary_translator 
+        result=$(translate "$input")
+    fi
+
+    # show result
+    if [[ ! -z "$result" ]]; then
+        echo -en "\0message\x1f$result\n"
+    else
+        echo -en "\0message\x1fOOF NIE DZIAŁA I CHUJ WIE CZEMU\n"
+    fi
+}
+
+
+input=$@
+
+if [[ -z $input ]]; then
+    echo -en "\0prompt\x1f\n"
+    echo -en "\0message\x1fType sth for ffs\n"
+else
+    main
+fi

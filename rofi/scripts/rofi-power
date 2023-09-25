@@ -1,0 +1,19 @@
+#!/bin/env bash
+
+message=("\uf011 : Shutdown\n\uf021 : Reboot\n\uf842 : Logout\n\uf7c9 : Lock\n\uf9b1 : Sleep")
+
+# creates menu
+[[ -z "$DISPLAY" ]] && exit 1
+choice=$(echo -e $message |\
+         rofi -dmenu -i -l 5 -p "" |\
+         awk '{print $NF}')
+[[ -z "$choice" ]] && exit 1
+
+# executes choice
+case "$choice" in
+  Shutdown) poweroff		          	;;
+  Reboot) reboot 			              ;;
+  Logout) pkill -KILL -u "$USER" &	;;
+  Sleep) systemctl suspend          ;;
+  Lock) lock                        ;;
+esac
